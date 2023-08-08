@@ -1,0 +1,8 @@
+# nesteam
+python -m venv venv
+call venv\Scripts\activate
+pip install django
+pip install djangorestframework
+django-admin startproject nesteam .
+python manage.py startapp usersapp
+python manage.py startapp games
