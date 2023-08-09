@@ -17,10 +17,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from games.views import *
+from rest_framework import routers
+
+
+router = routers.DefaultRouter()
+router.register(r'genre', GenreViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('games/', games_list, name='games'),
+    # path('games/', games_list, name='games'),
+    # path('create-game/', CreateGameAPIView.as_view(), name='create-game'),
+
+    path('games/', GamesView.as_view(), name='games'),
     path('studios/', StudiosListAPIView.as_view(), name='games'),
     path('users/', include('usersapp.urls')),
+    path('', include(router.urls)),
 ]
