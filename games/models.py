@@ -7,3 +7,12 @@ class Game(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Studio(models.Model):
+    name = models.CharField(max_length=55)
+    workers_count = models.IntegerField(default=0)
+    games_count = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.name

@@ -1,8 +1,7 @@
-from django.shortcuts import render
 from django.http import JsonResponse
-from .models import Game
-from .serializers import GameSerializer
-
+from rest_framework.generics import ListAPIView
+from .models import *
+from .serializers import *
 
 
 def games_list(request):
@@ -11,3 +10,7 @@ def games_list(request):
     data = serializer.data
     return JsonResponse(data, safe=False)
 
+
+class StudiosListAPIView(ListAPIView):
+    queryset = Studio.objects.all()
+    serializer_class = StudioSerializer
