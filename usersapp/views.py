@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.contrib.auth.models import User
-from .serializers import UserListSerializer
+from rest_framework.viewsets import ModelViewSet
+from .serializers import *
 
 
 def users_list(request):
@@ -15,3 +16,8 @@ def user_info(request, pk):
     user_object = User.objects.get(pk=pk)
     serializer = UserListSerializer(user_object)
     return JsonResponse(serializer.data, safe=False)
+
+
+class UserViewSet(ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
