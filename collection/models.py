@@ -19,7 +19,11 @@ class GameCollection(models.Model):
     likes = models.ManyToManyField(
         to=User,
         related_name='liked_collection',
+        blank=True,
     )
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        ordering = ['id']
