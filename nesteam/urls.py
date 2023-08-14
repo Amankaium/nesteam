@@ -31,6 +31,8 @@ urlpatterns = [
     path('games/', GamesView.as_view(), name='games'),
     path('game-create/', GameCreateAPIView.as_view(), name='games'),
     path('studios/', StudiosListAPIView.as_view(), name='games'),
+    
     path('users/', include('usersapp.urls')),
+    path('collections/', include('collection.urls')),
     path('', include(router.urls)),
 ]
