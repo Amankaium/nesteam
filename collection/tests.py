@@ -4,7 +4,7 @@ from .factories import CollectionFactory
 
 
 class CollectionsTest(APITestCase):
-    def getUp(self):
+    def setUp(self):
         self.col_1 = CollectionFactory()
         self.col_2 = CollectionFactory()
         self.col_3 = CollectionFactory()
