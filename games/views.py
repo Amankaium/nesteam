@@ -4,8 +4,11 @@ from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, \
     CreateAPIView, ListCreateAPIView
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from .models import *
 from .serializers import *
+from .paginations import GenrePagination
 
 
 # def games_list(request):
@@ -18,6 +21,7 @@ from .serializers import *
 class StudiosListAPIView(ListAPIView):
     queryset = Studio.objects.all()
     serializer_class = StudioSerializer
+    permission_classes  = [IsAuthenticated]
 
 
 # class CreateGameAPIView(CreateAPIView):
@@ -27,9 +31,11 @@ class StudiosListAPIView(ListAPIView):
 class GamesView(ListCreateAPIView):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
+    
 
 
 class GenreViewSet(ModelViewSet):
+    pagination_class = GenrePagination
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
 
