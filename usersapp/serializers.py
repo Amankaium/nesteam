@@ -19,3 +19,15 @@ class PlayerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Player
         fields = '__all__'
+
+
+class UserRegistrationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'password']
+
+
+class UserLoginSerializer(serializers.Serializer):
+    class Meta:
+        model = User
+        fields = ['username', 'password']
