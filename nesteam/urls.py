@@ -32,7 +32,8 @@ urlpatterns = [
     path('games-search/', GamesSearchView.as_view(), name='games-search'),
     path('game-create/', GameCreateAPIView.as_view(), name='games'),
     path('studios/', StudiosListAPIView.as_view(), name='games'),
-    
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken')),
     path('users/', include('usersapp.urls')),
     path('collections/', include('collection.urls')),
     path('', include(router.urls)),
