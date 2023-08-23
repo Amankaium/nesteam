@@ -23,7 +23,6 @@ class StudiosListAPIView(ListAPIView):
     serializer_class = StudioSerializer
     permission_classes  = [IsAuthenticated]
 
-
 # class CreateGameAPIView(CreateAPIView):
 #     queryset = Game.objects.all()
 #     serializer_class = GameSerializer

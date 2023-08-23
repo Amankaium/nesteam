@@ -34,6 +34,7 @@ urlpatterns = [
     path('studios/', StudiosListAPIView.as_view(), name='games'),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken')),
+    path('auth/', include('djoser.urls.jwt')),
     path('users/', include('usersapp.urls')),
     path('collections/', include('collection.urls')),
     path('', include(router.urls)),
