@@ -1,4 +1,5 @@
 from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, \
@@ -9,6 +10,7 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from .models import *
 from .serializers import *
 from .paginations import GenrePagination
+from .mixins import HelloMixin
 
 
 # def games_list(request):
@@ -27,10 +29,13 @@ class StudiosListAPIView(ListAPIView):
 #     queryset = Game.objects.all()
 #     serializer_class = GameSerializer
 
-class GamesView(ListCreateAPIView):
+class GamesView(LoginRequiredMixin, ListCreateAPIView, HelloMixin):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
-    
+
+    def get(self, request, *args, **kwargs):
+        self.say_hello()
+        return super().get(request, *args, **kwargs)
 
 
 class GenreViewSet(ModelViewSet):
